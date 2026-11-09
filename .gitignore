@@ -1,0 +1,13 @@
+# Claves privadas: NUNCA al repositorio
+*.key
+*.pem
+certificados/*.key
+
+# Base de datos local (se regenera con crear_bd.py)
+*.db
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
