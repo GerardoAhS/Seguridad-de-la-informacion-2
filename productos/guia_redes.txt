@@ -1,0 +1,5 @@
+Guia rapida de redes
+====================
+Apuntes introductorios sobre el modelo OSI, direccionamiento IP
+y los servicios basicos de una red local.
+(Contenido de prueba para el proyecto.)
