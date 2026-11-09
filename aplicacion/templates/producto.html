@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>{{ p['name'] }}</h1>
+<p>{{ p['description'] }}</p>
+<p class="precio">${{ '%.2f' % p['price'] }}</p>
+<p><a href="{{ url_for('catalogo') }}">&larr; Volver al catálogo</a></p>
+{% endblock %}

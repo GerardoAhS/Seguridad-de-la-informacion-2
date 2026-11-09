@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Tienda Digital{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}">
+</head>
+<body>
+  <header>
+    <a class="logo" href="{{ url_for('catalogo') }}">Tienda Digital</a>
+    <nav>
+      {% if g.usuario %}
+        <span>{{ g.usuario['name'] }} ({{ g.usuario['role'] }})</span>
+        <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+        <a href="{{ url_for('registro') }}">Registrarse</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main>
+    {% with mensajes = get_flashed_messages() %}
+      {% for m in mensajes %}<p class="aviso">{{ m }}</p>{% endfor %}
+    {% endwith %}
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+</html>

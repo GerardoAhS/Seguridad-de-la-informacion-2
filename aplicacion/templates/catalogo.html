@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block contenido %}
+<h1>Catálogo</h1>
+<div class="productos">
+  {% for p in productos %}
+  <div class="tarjeta">
+    <h3>{{ p['name'] }}</h3>
+    <p>{{ p['description'] }}</p>
+    <p class="precio">${{ '%.2f' % p['price'] }}</p>
+    <a href="{{ url_for('producto', producto_id=p['id']) }}">Ver detalle</a>
+  </div>
+  {% else %}
+  <p>No hay productos disponibles.</p>
+  {% endfor %}
+</div>
+{% endblock %}
