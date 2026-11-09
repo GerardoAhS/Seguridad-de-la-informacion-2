@@ -1,0 +1,17 @@
+body { font-family: Arial, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+header { display: flex; justify-content: space-between; align-items: center;
+         background: #1f3a5f; padding: 12px 24px; }
+header a, header span { color: #fff; text-decoration: none; margin-left: 16px; }
+.logo { font-weight: bold; font-size: 1.2em; margin-left: 0; }
+main { max-width: 800px; margin: 24px auto; padding: 0 16px; }
+.productos { display: flex; flex-wrap: wrap; gap: 16px; }
+.tarjeta { background: #fff; border: 1px solid #ddd; border-radius: 6px;
+           padding: 16px; width: 220px; }
+.precio { font-weight: bold; color: #1f3a5f; }
+form { display: flex; flex-direction: column; max-width: 340px; gap: 12px; }
+label { display: flex; flex-direction: column; font-size: 0.9em; }
+input { padding: 8px; margin-top: 4px; border: 1px solid #bbb; border-radius: 4px; }
+button { padding: 10px; background: #1f3a5f; color: #fff; border: none;
+         border-radius: 4px; cursor: pointer; }
+.aviso { background: #fff3cd; border: 1px solid #e6d27a; padding: 10px;
+         border-radius: 4px; }
