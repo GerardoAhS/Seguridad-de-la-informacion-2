@@ -1,4 +1,0 @@
-Introduccion a Python
-=====================
-Variables, funciones, listas y archivos. Ejercicios resueltos.
-(Contenido de prueba para el proyecto.)

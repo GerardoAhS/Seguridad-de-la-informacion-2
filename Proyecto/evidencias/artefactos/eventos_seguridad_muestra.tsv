@@ -1,0 +1,249 @@
+id	fecha_utc	usuario	evento	resultado	origen	detalle
+1	2026-11-09 23:44:46	ana@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+2	2026-11-09 23:44:46	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+3	2026-11-09 23:44:46	ana@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=usuario:consultar ruta=/admin/usuarios
+4	2026-11-09 23:44:46	ana@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=evento:consultar ruta=/admin/eventos
+5	2026-11-09 23:44:46	ana@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=sesion:revocar ruta=/admin/sesiones
+6	2026-11-09 23:44:46	ana@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=producto:modificar ruta=/operador/productos
+7	2026-11-09 23:44:46	ana@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=orden:ver_todas ruta=/operador/ordenes
+8	2026-11-09 23:44:46	operador@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=OPERADOR
+9	2026-11-09 23:44:46	operador@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=rol:asignar ruta=/admin/usuarios/4/rol
+10	2026-11-09 23:44:46	operador@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=usuario:consultar ruta=/admin/usuarios
+11	2026-11-09 23:44:47	admin@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=ADMINISTRADOR
+12	2026-11-09 23:44:47	admin@tienda.test	ROLE_CHANGED	OK	127.0.0.1	usuario=4 CLIENTE->OPERADOR
+13	2026-11-09 23:44:47	admin@tienda.test	ROLE_CHANGED	OK	127.0.0.1	usuario=4 OPERADOR->CLIENTE
+14	2026-11-09 23:44:47	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+15	2026-11-09 23:44:47	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=1 total_centavos=23800
+16	2026-11-09 23:44:47	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=1 ref=TX-ACEA83F8AFC2 marca=Visa
+17	2026-11-09 23:44:47	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=1 algoritmo=RSA-PSS-SHA256
+18	2026-11-09 23:44:47	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	orden=1 origen=bd
+19	2026-11-09 23:44:48	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	origen=archivo Firma auténtica y coincide con los registros de la orden.
+20	2026-11-09 23:44:48	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+21	2026-11-09 23:44:48	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=2 total_centavos=8900
+22	2026-11-09 23:44:48	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=2 ref=TX-0EC087AF9B61 marca=Visa
+23	2026-11-09 23:44:48	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=2 algoritmo=RSA-PSS-SHA256
+24	2026-11-09 23:44:48	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+25	2026-11-09 23:44:48	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	orden=2 origen=bd
+26	2026-11-09 23:44:48	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+27	2026-11-09 23:44:48	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=3 total_centavos=48600
+28	2026-11-09 23:44:48	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=3 ref=TX-42FDCF2A2F5F marca=Visa
+29	2026-11-09 23:44:48	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=3 algoritmo=RSA-PSS-SHA256
+30	2026-11-09 23:44:48	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=3 producto=1 tipo=md
+31	2026-11-09 23:44:48	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=3 producto=1
+32	2026-11-09 23:44:48	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=3 producto=2 tipo=txt
+33	2026-11-09 23:44:48	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=3 producto=2
+34	2026-11-09 23:44:48	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=3 producto=3 tipo=pdf
+35	2026-11-09 23:44:48	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=3 producto=3
+36	2026-11-09 23:44:48	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=3 producto=4 tipo=png
+37	2026-11-09 23:44:48	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=3 producto=4
+38	2026-11-09 23:44:48	admin@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=ADMINISTRADOR
+39	2026-11-09 23:44:48	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=3 producto=3 metodo=huella invisible (HMAC verificado)
+40	2026-11-09 23:44:48	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+41	2026-11-09 23:44:48	luis@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=4 total_centavos=8900
+42	2026-11-09 23:44:48	luis@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=4 ref=TX-A978DDC4BD2A marca=Visa
+43	2026-11-09 23:44:48	luis@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=4 algoritmo=RSA-PSS-SHA256
+44	2026-11-09 23:44:48	luis@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=4 producto=2 tipo=txt
+45	2026-11-09 23:44:48	luis@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=4 producto=2
+46	2026-11-09 23:44:48	luis@tienda.test	DOWNLOAD	DENEGADO	127.0.0.1	orden=4 producto=3 (no comprado o no pagado)
+47	2026-11-09 23:44:48	luis@tienda.test	DOWNLOAD	DENEGADO	127.0.0.1	orden=1 producto=1 (no comprado o no pagado)
+48	2026-11-09 23:44:48	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+49	2026-11-09 23:44:48	luis@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=5 total_centavos=4900
+50	2026-11-09 23:44:48	luis@tienda.test	DOWNLOAD	DENEGADO	127.0.0.1	orden=5 producto=4 (no comprado o no pagado)
+51	2026-11-09 23:44:49	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+52	2026-11-09 23:44:49	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=6 total_centavos=14900
+53	2026-11-09 23:44:49	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=6 ref=TX-3755FC81B5A4 marca=Visa
+54	2026-11-09 23:44:49	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=6 algoritmo=RSA-PSS-SHA256
+55	2026-11-09 23:44:49	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+56	2026-11-09 23:44:49	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	orden=6 origen=bd
+57	2026-11-09 23:44:49	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=6 producto=1 tipo=md
+58	2026-11-09 23:44:49	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=6 producto=1
+59	2026-11-09 23:44:49	nuevo@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+60	2026-11-09 23:44:49	nuevo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+61	2026-11-09 23:44:49	nuevo@tienda.test	USER_REGISTERED	RECHAZADO	127.0.0.1	correo ya registrado
+62	2026-11-09 23:44:49	bloqueo@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+63	2026-11-09 23:44:49	bloqueo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+64	2026-11-09 23:44:49	bloqueo@tienda.test	EMAIL_VERIFIED	OK	127.0.0.1	
+65	2026-11-09 23:44:49	bloqueo@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+66	2026-11-09 23:44:49	bloqueo@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+67	2026-11-09 23:44:50	bloqueo@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+68	2026-11-09 23:44:50	bloqueo@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+69	2026-11-09 23:44:50	bloqueo@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+70	2026-11-09 23:44:50	bloqueo@tienda.test	LOGIN_FAILED	BLOQUEADO	127.0.0.1	demasiados intentos fallidos
+71	2026-11-09 23:44:50	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+72	2026-11-09 23:44:50	ana@tienda.test	CSRF_REJECTED	DENEGADO	127.0.0.1	ruta=/carrito/agregar/1
+73	2026-11-09 23:44:50	ana@tienda.test	CSRF_REJECTED	DENEGADO	127.0.0.1	ruta=/carrito/agregar/1
+74	2026-11-09 23:44:50	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+75	2026-11-09 23:44:50	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+76	2026-11-09 23:44:51	admin@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=ADMINISTRADOR
+77	2026-11-09 23:44:51	admin@tienda.test	SESSION_REVOKED	OK	127.0.0.1	sesion de luis@tienda.test
+78	2026-11-09 23:44:51	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+79	2026-11-09 23:44:51	admin@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=ADMINISTRADOR
+80	2026-11-09 23:44:51	admin@tienda.test	ACCOUNT_DISABLED	OK	127.0.0.1	usuario=4
+81	2026-11-09 23:44:51	luis@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	cuenta desactivada
+82	2026-11-09 23:44:51	admin@tienda.test	ACCOUNT_ENABLED	OK	127.0.0.1	usuario=4
+83	2026-11-09 23:44:51	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+84	2026-11-09 23:44:51	reset@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+85	2026-11-09 23:44:51	reset@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+86	2026-11-09 23:44:51	reset@tienda.test	EMAIL_VERIFIED	OK	127.0.0.1	
+87	2026-11-09 23:44:51	reset@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+88	2026-11-09 23:44:51	reset@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+89	2026-11-09 23:44:51	nadie@tienda.test	PASSWORD_RESET_REQUESTED	IGNORADO	127.0.0.1	correo no registrado o cuenta desactivada
+90	2026-11-09 23:44:51	reset@tienda.test	PASSWORD_RESET	OK	127.0.0.1	
+91	2026-11-09 23:44:52	reset@tienda.test	LOGIN_FAILED	RECHAZADO	127.0.0.1	contraseña incorrecta
+92	2026-11-09 23:44:52	reset@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+93	2026-11-09 23:44:52	-	PASSWORD_RESET	RECHAZADO	127.0.0.1	token inválido, usado o vencido
+94	2026-11-09 23:44:52	reset@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+95	2026-11-09 23:44:52	reset@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+96	2026-11-09 23:44:52	-	PASSWORD_RESET	RECHAZADO	127.0.0.1	token inválido, usado o vencido
+97	2026-11-09 23:44:52	codigo@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+98	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+99	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_VERIFIED	OK	127.0.0.1	
+100	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+101	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+102	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+103	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	OK	127.0.0.1	
+104	2026-11-09 23:44:52	codigo@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+105	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+106	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+107	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+108	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+109	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+110	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+111	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+112	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+113	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+114	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+115	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+116	2026-11-09 23:44:52	codigo@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+117	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET_REQUESTED	OK	127.0.0.1	
+118	2026-11-09 23:44:52	codigo@tienda.test	PASSWORD_RESET	RECHAZADO	127.0.0.1	código inválido, usado, vencido o agotado
+119	2026-11-09 23:44:52	confirma@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+120	2026-11-09 23:44:52	confirma@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=simulado
+121	2026-11-09 23:44:52	confirma@tienda.test	LOGIN_PENDING_VERIFICATION	PENDIENTE	127.0.0.1	correo sin confirmar
+122	2026-11-09 23:44:52	confirma@tienda.test	EMAIL_VERIFIED	RECHAZADO	127.0.0.1	código inválido, vencido o agotado
+123	2026-11-09 23:44:52	confirma@tienda.test	EMAIL_VERIFIED	OK	127.0.0.1	
+124	2026-11-09 23:44:53	confirma@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+125	2026-11-09 23:44:53	smtp@tienda.test	USER_REGISTERED	OK	127.0.0.1	rol=CLIENTE (pendiente de confirmar correo)
+126	2026-11-09 23:44:53	smtp@tienda.test	EMAIL_SENT	OK	127.0.0.1	via=smtp
+127	2026-11-09 23:44:53	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+128	2026-11-09 23:44:53	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=7 total_centavos=4900
+129	2026-11-09 23:44:53	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=7 ref=TX-517B622B89A4 marca=Visa
+130	2026-11-09 23:44:53	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=7 algoritmo=RSA-PSS-SHA256
+131	2026-11-09 23:44:53	luis@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+132	2026-11-09 23:44:53	luis@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	orden ajena id=7
+133	2026-11-09 23:44:53	luis@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	orden ajena id=7
+134	2026-11-09 23:44:53	luis@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	orden ajena id=7
+135	2026-11-09 23:44:53	luis@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	orden ajena id=7
+136	2026-11-09 23:44:53	operador@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=OPERADOR
+137	2026-11-09 23:44:53	operador@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=evento:consultar ruta=/admin/eventos
+138	2026-11-09 23:44:53	operador@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=config:administrar ruta=/admin/configuracion
+139	2026-11-09 23:44:53	operador@tienda.test	ACCESS_DENIED	DENEGADO	127.0.0.1	permiso=carrito:usar ruta=/carrito
+140	2026-11-09 23:44:53	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+141	2026-11-09 23:44:53	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=8 total_centavos=4900
+142	2026-11-09 23:44:53	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=8 ref=TX-F3CA32F006DA marca=Visa
+143	2026-11-09 23:44:53	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=8 algoritmo=RSA-PSS-SHA256
+144	2026-11-09 23:44:53	operador@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=OPERADOR
+145	2026-11-09 23:44:53	operador@tienda.test	PRODUCT_UPDATED	OK	127.0.0.1	producto=4 precio 4900->9999
+146	2026-11-09 23:44:53	operador@tienda.test	PRODUCT_UPDATED	OK	127.0.0.1	producto=4 precio 9999->4900
+147	2026-11-09 23:44:53	operador@tienda.test	ORDER_STATUS_CHANGED	OK	127.0.0.1	orden=8 PAGADA->COMPLETADA
+148	2026-11-09 23:44:54	' or '1'='1' --	LOGIN_FAILED	RECHAZADO	127.0.0.1	usuario inexistente
+149	2026-11-09 23:44:54	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+150	2026-11-09 23:44:54	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+151	2026-11-09 23:44:54	x@y.test [2026-01-01 00:00:00] login_success   usuario=admin	LOGIN_FAILED	RECHAZADO	127.0.0.1	usuario inexistente
+152	2026-11-09 23:44:54	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+153	2026-11-09 23:44:54	ana@tienda.test	LOGOUT	OK	127.0.0.1	
+154	2026-11-09 23:44:54	operador@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=OPERADOR
+155	2026-11-09 23:44:54	operador@tienda.test	PRODUCT_CREATED	OK	127.0.0.1	producto=19 sha256=2b189a0c284159ad
+156	2026-11-09 23:44:54	operador@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=OPERADOR
+157	2026-11-09 23:44:54	operador@tienda.test	PRODUCT_CREATED	OK	127.0.0.1	producto=20 sha256=956a7009f9505915
+158	2026-11-09 23:44:55	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+159	2026-11-09 23:44:55	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=9 total_centavos=100
+160	2026-11-09 23:44:55	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=9 ref=TX-54AA5287CCD4 marca=Visa
+161	2026-11-09 23:44:55	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=9 algoritmo=RSA-PSS-SHA256
+162	2026-11-09 23:44:55	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=9 producto=20 tipo=txt
+163	2026-11-09 23:44:55	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=9 producto=20
+164	2026-11-09 23:44:55	ana@tienda.test	INTEGRITY_FAILURE	ERROR	127.0.0.1	producto=20 archivo alterado o ausente (InvalidTag)
+165	2026-11-09 23:44:55	ana@tienda.test	INTERNAL_ERROR	ERROR	127.0.0.1	ruta=/descargas/9/20 tipo=NoneType
+166	2026-11-09 23:44:56	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+167	2026-11-09 23:44:56	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=10 total_centavos=8900
+168	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-4ADD0A72B43F motivo=El número de tarjeta está incompleto (falta 1 dígito).
+169	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-DF570E86E26B motivo=El número de tarjeta no es válido (dígito verificador incorrecto).
+170	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-D6059017406B motivo=La tarjeta está vencida.
+171	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-A477C4D49857 motivo=El código de seguridad (CVV) debe tener 3 dígitos.
+172	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-F36DD1681833 motivo=El nombre del titular está incompleto (nombre y apellido como aparece en la tarjeta).
+173	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=10 ref=RX-963EFF6899AE motivo=Tarjeta declinada por el banco emisor.
+174	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=10 ref=TX-F525F7A41719 marca=Visa
+175	2026-11-09 23:44:56	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=10 algoritmo=RSA-PSS-SHA256
+176	2026-11-09 23:44:56	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+177	2026-11-09 23:44:56	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=11 total_centavos=8900
+178	2026-11-09 23:44:56	ana@tienda.test	PAYMENT_REJECTED	RECHAZADO	127.0.0.1	orden=11 ref=RX-BBD3F94B475C motivo=El nombre del titular está incompleto (nombre y apellido como aparece en la tarjeta).
+179	2026-11-09 23:44:57	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+180	2026-11-09 23:44:57	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=12 total_centavos=23800
+181	2026-11-09 23:44:57	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=12 ref=TX-C5C65A5050A2 marca=Visa
+182	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=12 algoritmo=RSA-PSS-SHA256
+183	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	origen=archivo Firma auténtica y coincide con los registros de la orden.
+184	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	origen=archivo Firma auténtica y coincide con los registros de la orden.
+185	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	origen=archivo Firma auténtica y coincide con los registros de la orden.
+186	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+187	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+188	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+189	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo Estructura alterada: campos agregados ['descuento'].
+190	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+191	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo El identificador de clave no corresponde a la clave pública de esta plataforma.
+192	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo El algoritmo declarado fue modificado ('NINGUNO').
+193	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+194	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo El archivo tiene el campo «total_centavos» repetido (posible manipulación).
+195	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	origen=archivo La firma es auténtica, pero los registros de la orden en la plataforma no coinciden con lo firmado.
+196	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	INVALIDA	127.0.0.1	orden=12 origen=bd
+197	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_VERIFIED	OK	127.0.0.1	origen=archivo Firma auténtica y coincide con los registros de la orden.
+198	2026-11-09 23:44:57	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+199	2026-11-09 23:44:57	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=13 total_centavos=39700
+200	2026-11-09 23:44:57	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=13 ref=TX-84E612634A96 marca=Visa
+201	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=13 algoritmo=RSA-PSS-SHA256
+202	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=13 producto=1 tipo=md
+203	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=13 producto=1
+204	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=13 producto=3 tipo=pdf
+205	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=13 producto=3
+206	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=13 producto=4 tipo=png
+207	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=13 producto=4
+208	2026-11-09 23:44:57	admin@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=ADMINISTRADOR
+209	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=13 producto=3 metodo=huella invisible (HMAC verificado)
+210	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=13 producto=4 metodo=huella invisible (HMAC verificado)
+211	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=13 producto=1 metodo=huella invisible (HMAC verificado)
+212	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=13 producto=1 metodo=huella invisible (HMAC verificado)
+213	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	OK	127.0.0.1	usuario=3 orden=13 producto=- metodo=comprobante firmado
+214	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	SIN_HUELLA	127.0.0.1	Es el archivo ORIGINAL del producto «Apuntes de redes seguras» (sin huella): no es una copia descargada por un cliente.
+215	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	SIN_HUELLA	127.0.0.1	El archivo SÍ contiene una marca con el formato de la plataforma, pero su HMAC no es válido: fue alterada o se generó con otra clave (¿se regeneró cla
+216	2026-11-09 23:44:57	admin@tienda.test	FINGERPRINT_RECOVERED	SIN_HUELLA	127.0.0.1	No se encontró una huella en el archivo. Causas posibles: no es una copia descargada de la tienda, se convirtió a otro formato (p. ej. JPG, captura de
+217	2026-11-09 23:44:57	ana@tienda.test	LOGIN_SUCCESS	OK	127.0.0.1	rol=CLIENTE
+218	2026-11-09 23:44:57	ana@tienda.test	ORDER_CREATED	OK	127.0.0.1	orden=14 total_centavos=199600
+219	2026-11-09 23:44:57	ana@tienda.test	PAYMENT_APPROVED	OK	127.0.0.1	orden=14 ref=TX-AFA161CB53C0 marca=Visa
+220	2026-11-09 23:44:57	ana@tienda.test	SIGNATURE_CREATED	OK	127.0.0.1	orden=14 algoritmo=RSA-PSS-SHA256
+221	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=5 tipo=pdf
+222	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=5
+223	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=6 tipo=pdf
+224	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=6
+225	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=7 tipo=md
+226	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=7
+227	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=8 tipo=pdf
+228	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=8
+229	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=9 tipo=md
+230	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=9
+231	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=10 tipo=pdf
+232	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=10
+233	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=11 tipo=txt
+234	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=11
+235	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=12 tipo=md
+236	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=12
+237	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=13 tipo=txt
+238	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=13
+239	2026-11-09 23:44:57	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=14 tipo=md
+240	2026-11-09 23:44:57	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=14
+241	2026-11-09 23:44:58	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=15 tipo=png
+242	2026-11-09 23:44:58	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=15
+243	2026-11-09 23:44:58	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=16 tipo=pdf
+244	2026-11-09 23:44:58	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=16
+245	2026-11-09 23:44:58	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=17 tipo=txt
+246	2026-11-09 23:44:58	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=17
+247	2026-11-09 23:44:58	ana@tienda.test	FINGERPRINT_CREATED	OK	127.0.0.1	orden=14 producto=18 tipo=png
+248	2026-11-09 23:44:58	ana@tienda.test	DOWNLOAD	OK	127.0.0.1	orden=14 producto=18

@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% from "_macros.html" import estado, csrf with context %}
+{% block titulo %}Pedido #{{ o.id }}{% endblock %}
+{% block contenido %}
+<div class="tarjeta media"><h1>Pedido #{{ o.id }} {{ estado(o.status) }}</h1><p class="pequeno">Cliente: {{ o.name }} · {{ o.created_at }}</p>
+<div class="tabla-envoltura"><table><thead><tr><th>Producto</th><th>Precio</th></tr></thead><tbody>{% for i in items %}<tr><td>{{ i.name }}</td><td>{{ i.price_cents|mxn }}</td></tr>{% endfor %}</tbody>
+<tfoot><tr><th>Total</th><th>{{ o.total_cents|mxn }}</th></tr></tfoot></table></div>
+{% if permitidos %}<form method="post">{{ csrf() }}<label>Cambiar estado</label>
+<select name="estado">{% for e in permitidos %}<option>{{ e }}</option>{% endfor %}</select><p><button class="comprar">Actualizar</button></p></form>{% endif %}</div>{% endblock %}

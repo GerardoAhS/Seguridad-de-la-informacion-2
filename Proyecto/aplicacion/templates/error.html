@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block contenido %}
+<div class="tarjeta angosta resultado-pago"><p class="numero-error">{{ codigo }}</p>
+<h1>{{ titulo }}</h1><p>{{ texto }}</p><a class="boton comprar" href="{{ url_for('publico.catalogo') }}">Volver al catálogo</a></div>
+{% endblock %}

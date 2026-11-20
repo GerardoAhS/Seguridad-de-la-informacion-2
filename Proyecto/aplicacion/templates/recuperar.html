@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Recuperar contraseña{% endblock %}
+{% block contenido %}
+<div class="tarjeta angosta">
+<div class="admin-titulo"><div><h1>Recuperar contraseña</h1><span class="pequeno">Te enviaremos un código (token) de un solo uso.</span></div></div>
+<form method="post">{{ csrf() }}
+<label for="email">Correo electrónico de tu cuenta</label><input type="email" id="email" name="email" required placeholder="tu@correo.com">
+<p><button class="comprar ancho grande">Enviar código</button></p></form>
+<p class="pequeno">¿Ya tienes un código? <a href="{{ url_for('publico.restablecer_codigo') }}">Escríbelo aquí</a></p>
+{% if simulado %}<div class="aviso info">Modo laboratorio: no hay servidor de correo configurado, así que los mensajes se guardan en <code>registros/correo_simulado.log</code>. Configura <code>claves_privadas/correo.ini</code> para enviarlos de verdad.</div>{% endif %}
+</div>{% endblock %}

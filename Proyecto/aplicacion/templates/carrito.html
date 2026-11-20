@@ -1,0 +1,27 @@
+{% extends "base.html" %}{% from "_macros.html" import icono, csrf with context %}
+{% block titulo %}Carrito{% endblock %}
+{% block contenido %}
+<div class="pasos"><span class="actual">1 · Carrito</span><span>2 · Pago</span><span>3 · Descarga</span></div>
+<h1>Tu carrito</h1>
+{% if items %}
+<div class="caja">
+  <div class="tarjeta">
+    {% for i in items %}<div class="renglon">{{ icono(i.category) }}
+      <div class="nombre"><b>{{ i.name }}</b><small>{{ i.category }} · .{{ i.file_type }}</small></div>
+      <b>{{ i.price_cents|mxn }}</b>
+      <form method="post" action="{{ url_for('cliente.carrito_quitar', pid=i.id) }}">{{ csrf() }}<button class="suave btn-icono" title="Quitar" aria-label="Quitar">✕</button></form>
+    </div>{% endfor %}
+  </div>
+  <div class="tarjeta">
+    <h3>Resumen</h3>
+    <div class="renglon"><span class="nombre">Productos ({{ items|length }})</span><b>{{ total|mxn }}</b></div>
+    <div class="renglon"><span class="nombre">Envío</span><b>Digital · $0.00</b></div>
+    <div class="total"><span>Total</span><span>{{ total|mxn }} MXN</span></div>
+    <form method="post" action="{{ url_for('cliente.orden_crear') }}">{{ csrf() }}<p><button class="comprar grande ancho">Continuar al pago</button></p></form>
+    <a class="pequeno" href="{{ url_for('publico.catalogo') }}">← Seguir comprando</a>
+  </div>
+</div>
+{% else %}
+<div class="tarjeta vacio"><h3>Tu carrito está vacío</h3><p>Explora el catálogo y agrega lo que necesites.</p>
+<a class="boton comprar" href="{{ url_for('publico.catalogo') }}">Ir al catálogo</a></div>
+{% endif %}{% endblock %}

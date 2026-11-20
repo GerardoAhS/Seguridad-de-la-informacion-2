@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% from "_macros.html" import estado, csrf with context %}
+{% block titulo %}Usuarios{% endblock %}
+{% block contenido %}
+<h1>Usuarios</h1>
+<div class="tabla-envoltura"><table><thead><tr><th>#</th><th>Correo</th><th>Nombre</th><th>Rol</th><th>Estado</th><th>Último acceso</th><th>Acciones</th></tr></thead><tbody>
+{% for u in usuarios %}<tr><td>{{ u.id }}</td><td>{{ u.email }}{% if not u.email_verified %} <span class="etiqueta est-PENDIENTE">sin confirmar</span>{% endif %}</td><td>{{ u.name }}</td><td><span class="etiqueta">{{ u.role }}</span></td><td>{{ estado(u.status) }}</td><td>{{ u.last_login or '—' }}</td><td>
+<form class="en-linea" method="post" action="{{ url_for('staff.admin_rol', uid=u.id) }}">{{ csrf() }}
+<select name="rol" class="en-linea">{% for r in ['CLIENTE','OPERADOR','ADMINISTRADOR'] %}<option {{ 'selected' if r == u.role }}>{{ r }}</option>{% endfor %}</select> <button class="suave">Asignar</button></form>
+<form class="en-linea" method="post" action="{{ url_for('staff.admin_estado', uid=u.id) }}">{{ csrf() }}<button class="{{ 'peligro' if u.status == 'ACTIVO' else '' }}">{{ 'Desactivar' if u.status == 'ACTIVO' else 'Activar' }}</button></form></td></tr>{% endfor %}
+</tbody></table></div>
+<p class="pequeno">Aquí nunca se muestran contraseñas: solo existen como hash irreversible.</p>{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titulo %}Comprobante #{{ datos.numero_orden }}{% endblock %}
+{% block contenido %}
+<div class="media">
+<h1>Comprobante de la orden #{{ datos.numero_orden }}</h1>
+{% if valido %}<div class="sello bien"><span class="icono c-verde">✔</span><div><b class="valida">FIRMA VÁLIDA</b><br>El comprobante no fue modificado desde que se firmó y coincide con los registros de la orden.</div></div>
+{% elif not firma_ok %}<div class="sello mal"><span class="icono c-rojo">✖</span><div><b class="invalida">FIRMA INVÁLIDA</b><br>El contenido guardado no coincide con su firma digital: fue alterado.</div></div>
+{% else %}<div class="sello mal"><span class="icono c-rojo">⚠</span><div><b class="invalida">FIRMA VÁLIDA, PERO LA ORDEN FUE ALTERADA</b><br>El comprobante es auténtico, pero los registros actuales no coinciden con lo firmado:
+<ul class="diferencias">{% for d in diferencias %}<li>{{ d }}</li>{% endfor %}</ul></div></div>{% endif %}
+<div class="tabla-envoltura"><table class="ficha"><tbody>
+<tr><th>Cliente</th><td>{{ datos.usuario.nombre }} ({{ datos.usuario.correo }})</td></tr>
+<tr><th>Fecha (UTC)</th><td>{{ datos.fecha }}</td></tr>
+<tr><th>Referencia de transacción</th><td class="mono">{{ datos.referencia_transaccion }}</td></tr>
+<tr><th>Productos</th><td>{% for p in datos.productos %}{{ p.nombre }} — {{ p.precio_centavos|mxn }}<br>{% endfor %}</td></tr>
+<tr><th>Total</th><td><b>{{ datos.total_centavos|mxn }}</b> · {{ datos.moneda }}</td></tr>
+<tr><th>Algoritmo</th><td>RSA-PSS con SHA-256 · clave pública <span class="mono">{{ r.key_id }}</span></td></tr>
+<tr><th>Firma (base64)</th><td class="mono">{{ r.signature }}</td></tr></tbody></table></div>
+<div class="acciones"><a class="boton comprar" href="{{ url_for('cliente.comprobante_descargar', oid=datos.numero_orden) }}">⬇ Descargar comprobante (.json)</a>
+<a class="boton fantasma" href="{{ url_for('cliente.verificar') }}">Verificar un archivo</a></div>
+</div>{% endblock %}

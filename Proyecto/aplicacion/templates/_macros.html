@@ -1,0 +1,19 @@
+{% macro icono(cat, extra='') -%}
+{%- set c = CATEGORIAS.get(cat, ('', 'azul')) -%}
+<span class="lomo c-{{ c[1] }} {{ extra }}" aria-hidden="true"></span>
+{%- endmacro %}
+
+{% macro color(cat) -%}c-{{ CATEGORIAS.get(cat, ('', 'azul'))[1] }}{%- endmacro %}
+
+{% macro estado(valor) -%}<span class="etiqueta est-{{ valor }}">{{ valor }}</span>{%- endmacro %}
+
+{% macro csrf() -%}<input type="hidden" name="csrf_token" value="{{ csrf_token }}">{%- endmacro %}
+
+{% macro logo() -%}
+<svg viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M24 13c-4.5-3.2-10.5-4-17-3.2v26c6.5-.8 12.5 0 17 3.2 4.5-3.2 10.5-4 17-3.2v-26c-6.5-.8-12.5 0-17 3.2z"/>
+  <path d="M24 13v26"/>
+  <path d="M31 21.5v-2.2a3 3 0 0 1 6 0v2.2" stroke-width="1.8"/>
+  <rect x="29.5" y="21.5" width="9" height="7" rx="1.4" stroke-width="1.8"/>
+</svg>
+{%- endmacro %}

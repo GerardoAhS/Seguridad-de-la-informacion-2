@@ -1,0 +1,11 @@
+{% extends "base.html" %}{% from "_macros.html" import icono with context %}
+{% block titulo %}Mis productos{% endblock %}
+{% block contenido %}
+<h1>Mis productos</h1>
+<p class="pequeno">Cada descarga es una copia personalizada con una huella invisible ligada a tu cuenta y a la orden. No la compartas.</p>
+{% if filas %}<div class="rejilla">{% for f in filas %}
+  <article class="producto"><div class="cuerpo"><div class="renglon">{{ icono(f.category) }}<div class="nombre"><b>{{ f.name }}</b><small>Orden #{{ f.order_id }} · .{{ f.file_type }}</small></div></div>
+  <div class="pie"><span class="pequeno">{{ f.created_at }}</span><a class="boton comprar" href="{{ url_for('cliente.descargar', oid=f.order_id, pid=f.product_id) }}">Descargar</a></div></div></article>
+{% endfor %}</div>
+{% else %}<div class="tarjeta vacio"><h3>Todavía no has comprado productos</h3><a class="boton comprar" href="{{ url_for('publico.catalogo') }}">Ir al catálogo</a></div>{% endif %}
+{% endblock %}

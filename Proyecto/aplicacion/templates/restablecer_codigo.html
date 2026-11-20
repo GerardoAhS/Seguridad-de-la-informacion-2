@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Nueva contraseña{% endblock %}
+{% block contenido %}
+<div class="tarjeta angosta">
+<div class="admin-titulo"><div><h1>Escribe tu código</h1><span class="pequeno">Vence en 15 minutos y solo se puede usar una vez.</span></div></div>
+<form method="post" action="{{ url_for('publico.restablecer_codigo') }}">{{ csrf() }}
+<label for="email">Correo electrónico</label><input type="email" id="email" name="email" value="{{ email }}" required>
+<label for="codigo">Código de recuperación</label><div class="codigo"><input type="text" id="codigo" name="codigo" inputmode="numeric" maxlength="7" placeholder="000000" required autocomplete="one-time-code"></div>
+<label for="password">Nueva contraseña</label><input type="password" id="password" name="password" required minlength="10" autocomplete="new-password">
+<label for="password2">Repítela</label><input type="password" id="password2" name="password2" required autocomplete="new-password">
+<p><button class="comprar ancho grande">Cambiar contraseña</button></p></form>
+{% if demo %}<div class="aviso info">MODO DEMOSTRACIÓN: código <b>{{ demo.codigo }}</b> · <a href="{{ demo.enlace }}">enlace</a></div>{% endif %}
+<p class="pequeno">¿No te llegó? <a href="{{ url_for('publico.recuperar') }}">Pide otro código</a> (el anterior deja de funcionar).</p>
+</div>{% endblock %}

@@ -1,4 +1,0 @@
-Manual basico de Linux
-======================
-Comandos esenciales, permisos de archivos y administracion
-de usuarios. (Contenido de prueba para el proyecto.)

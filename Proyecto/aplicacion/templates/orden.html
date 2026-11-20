@@ -1,0 +1,56 @@
+{% extends "base.html" %}{% from "_macros.html" import icono, estado, csrf with context %}
+{% block titulo %}Orden #{{ o.id }}{% endblock %}
+{% block contenido %}
+<div class="pasos"><span class="hecho">1 · Carrito</span><span class="{{ 'actual' if o.status == 'PENDIENTE' else 'hecho' }}">2 · Pago</span><span class="{{ 'actual' if o.status in ('PAGADA','COMPLETADA') }}">3 · Descarga</span></div>
+<h1>Orden #{{ o.id }} {{ estado(o.status) }}</h1>
+
+{% if resultado == 'aprobado' and o.status in ('PAGADA','COMPLETADA') %}
+<div class="tarjeta resultado-pago"><span class="icono grande c-verde">✔</span><h2>¡Pago completado!</h2>
+<p>Referencia <span class="mono">{{ ultimo.transaction_reference }}</span> · {{ ultimo.amount_cents|mxn }} MXN</p>
+<div class="acciones"><a class="boton comprar" href="{{ url_for('cliente.mis_productos') }}">Ir a mis descargas</a>
+<a class="boton fantasma" href="{{ url_for('cliente.comprobante', oid=o.id) }}">Ver comprobante firmado</a></div></div>
+{% elif resultado == 'rechazado' and o.status == 'PENDIENTE' and ultimo %}
+<div class="tarjeta resultado-pago"><span class="icono grande c-rojo">✖</span><h2>No se pudo completar el pago</h2>
+<p>{{ ultimo.detail or 'El pago fue rechazado.' }}</p><p class="pequeno">No se realizó ningún cargo. Revisa los datos e inténtalo de nuevo.</p></div>
+{% endif %}
+
+<div class="caja">
+  <div class="tarjeta">
+    <h3>Productos</h3>
+    {% for i in items %}<div class="renglon">{{ icono(i.category) }}
+      <div class="nombre"><b>{{ i.name }}</b><small>{{ i.category }} · .{{ i.file_type }}</small></div>
+      <b>{{ i.price_cents|mxn }}</b>
+      {% if o.status in ('PAGADA','COMPLETADA') %}<a class="boton" href="{{ url_for('cliente.descargar', oid=o.id, pid=i.id) }}">Descargar</a>{% endif %}
+    </div>{% endfor %}
+    <div class="total"><span>Total</span><span>{{ o.total_cents|mxn }} MXN</span></div>
+    {% if recibo %}<p><a class="boton fantasma" href="{{ url_for('cliente.comprobante', oid=o.id) }}">Ver comprobante firmado</a></p>{% endif %}
+  </div>
+
+  {% if o.status == 'PENDIENTE' %}
+  <div class="tarjeta">
+    <h3>Pago con tarjeta</h3>
+    <div class="tarjeta-credito" aria-hidden="true"><span class="tc-marca">VISA · MC · AMEX</span><div class="chip"></div>
+      <div class="tc-num">•••• •••• •••• ••••</div><div class="tc-pie"><span>Titular</span><span>MM/AA</span></div></div>
+    <form method="post" action="{{ url_for('cliente.orden_pagar', oid=o.id) }}" autocomplete="off">{{ csrf() }}
+      <label for="titular">Nombre del titular</label>
+      <input type="text" id="titular" name="titular" placeholder="Como aparece en la tarjeta" maxlength="60" required autocomplete="off">
+      <label for="numero">Número de tarjeta</label>
+      <input type="text" id="numero" name="numero" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="23" required autocomplete="off">
+      <div class="fila">
+        <div><label for="vencimiento">Vencimiento</label><input type="text" id="vencimiento" name="vencimiento" inputmode="numeric" placeholder="MM/AA" maxlength="7" required autocomplete="off"></div>
+        <div><label for="cvv">CVV</label><input type="password" id="cvv" name="cvv" inputmode="numeric" placeholder="•••" maxlength="4" required autocomplete="off"></div>
+      </div>
+      <p><button class="comprar grande ancho">Pagar {{ o.total_cents|mxn }} MXN</button></p>
+    </form>
+    <p class="seguro">Conexión cifrada (TLS). Los datos de la tarjeta se validan y se descartan: no se guardan en ningún lado.</p>
+    <div class="pruebas"><b>Pago simulado (proyecto académico).</b> No se hace ningún cargo. Tarjetas de prueba:<br>
+      Aprobada: <code>4242 4242 4242 4242</code> · <code>5555 5555 5555 4444</code> · Amex <code>3782 822463 10005</code><br>
+      {% for n, m in tarjetas_prueba.items() %}{{ m.rstrip('.') }}: <code>{{ n[:4] }} {{ n[4:8] }} {{ n[8:12] }} {{ n[12:] }}</code>{{ ' · ' if not loop.last }}{% endfor %}<br>
+      Cualquier fecha futura y CVV de 3 dígitos (4 en Amex).</div>
+  </div>
+  {% endif %}
+</div>
+
+{% if pagos %}<h3>Intentos de pago</h3><div class="tabla-envoltura"><table><thead><tr><th>Referencia</th><th>Monto</th><th>Resultado</th><th>Detalle</th><th>Fecha (UTC)</th></tr></thead><tbody>
+{% for p in pagos %}<tr><td class="mono">{{ p.transaction_reference }}</td><td>{{ p.amount_cents|mxn }}</td><td>{{ estado(p.status) }}</td><td>{{ p.detail or '—' }}</td><td>{{ p.created_at }}</td></tr>{% endfor %}</tbody></table></div>{% endif %}
+{% endblock %}

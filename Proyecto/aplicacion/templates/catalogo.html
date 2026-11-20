@@ -1,0 +1,64 @@
+{% extends "base.html" %}{% from "_macros.html" import icono, color, csrf with context %}
+{% block titulo %}Catálogo{% endblock %}
+{% block contenido %}
+{% if not q and not cat %}
+<section class="portada">
+  <div>
+    <p class="antetitulo">Material de estudio en formato digital</p>
+    <h1>Libros, apuntes y guías <em>que llegan a tu nombre</em>.</h1>
+    <p class="lead">Libros electrónicos, manuales, documentos técnicos y apuntes hechos para estudiar. Pagas, descargas al momento y te quedas con un comprobante firmado que cualquiera puede verificar.</p>
+    <form class="buscador" method="get" action="{{ url_for('publico.catalogo') }}">
+      <input type="search" name="q" placeholder="Busca un tema: Python, SQL, Git, cálculo…" maxlength="80" aria-label="Buscar productos">
+      <button>Buscar</button></form>
+    <p class="pequeno">Hay {{ total }} títulos en el estante.</p>
+  </div>
+  <aside class="nota">
+    <h3>Cómo funciona una compra</h3>
+    <p>Eliges lo que necesitas y pagas (aquí el pago es simulado). Al aprobarse, te damos un <b>comprobante firmado</b> con nuestra clave privada; si alguien lo altera, la firma deja de cuadrar.</p>
+    <p>Cada archivo que descargas es <b>tu copia</b>: lleva escondida una huella con tu usuario y tu número de orden.</p>
+    <p class="firma">— la tienda</p>
+  </aside>
+</section>
+{% endif %}
+
+<h2 class="titulo-seccion">Estantes</h2>
+<div class="categorias">
+  <a class="cat {{ 'activo' if not cat }}" href="{{ url_for('publico.catalogo', q=q or None) }}"><span><b>Todo</b><small>{{ total }} productos</small></span></a>
+  {% for nombre, (emoji, col) in CATEGORIAS.items() %}
+  <a class="cat {{ 'activo' if cat == nombre }}" href="{{ url_for('publico.catalogo', cat=nombre, q=q or None) }}">{{ icono(nombre) }}<span><b>{{ nombre }}</b><small>{{ conteo.get(nombre, 0) }} producto{{ 's' if conteo.get(nombre, 0) != 1 }}</small></span></a>
+  {% endfor %}
+</div>
+
+<div class="encabezado-seccion">
+  <div><h2>{% if q %}Resultados para «{{ q }}»{% elif cat %}{{ cat }}{% else %}Todo el catálogo{% endif %}</h2>
+  <span class="pequeno">{{ productos|length }} producto{{ 's' if productos|length != 1 }}</span></div>
+  {% if q or cat %}<form class="buscador" method="get" action="{{ url_for('publico.catalogo') }}">{% if cat %}<input type="hidden" name="cat" value="{{ cat }}">{% endif %}
+    <input type="search" name="q" value="{{ q }}" placeholder="Buscar…" maxlength="80" aria-label="Buscar"><button>Buscar</button>
+    <a class="boton fantasma" href="{{ url_for('publico.catalogo') }}">Limpiar</a></form>{% endif %}
+</div>
+<div class="rejilla">
+{% for p in productos %}
+  <article class="producto">
+    <a class="portadilla {{ color(p.category) }}" href="{{ url_for('publico.producto', pid=p.id) }}" aria-label="{{ p.name }}">
+      <span class="cubierta-cat">{{ p.category }}</span>
+      <span class="cubierta-titulo">{{ p.name }}</span>
+      <span class="cubierta-pie">.{{ p.file_type }}{% if p.id in nuevos %} · recién llegado{% endif %}</span></a>
+    <div class="cuerpo">
+      <h3><a href="{{ url_for('publico.producto', pid=p.id) }}">{{ p.name }}</a></h3>
+      <p class="desc">{{ p.description }}</p>
+      <div class="pie">
+        <span class="precio">{{ p.price_cents|mxn }}<small>MXN</small></span>
+        {% if usuario and usuario.role == 'CLIENTE' %}
+        <span>
+          <form class="en-linea" method="post" action="{{ url_for('cliente.carrito_agregar', pid=p.id) }}">{{ csrf() }}<button class="fantasma" title="Agregar al carrito">Al carrito</button></form>
+          <form class="en-linea" method="post" action="{{ url_for('cliente.comprar_ahora', pid=p.id) }}">{{ csrf() }}<button class="comprar">Comprar</button></form>
+        </span>
+        {% else %}<a class="boton fantasma" href="{{ url_for('publico.producto', pid=p.id) }}">Ver detalle</a>{% endif %}
+      </div>
+    </div>
+  </article>
+{% else %}
+  <div class="tarjeta vacio"><h3>No encontramos productos</h3><p>Prueba con otra palabra o explora otra categoría.</p></div>
+{% endfor %}
+</div>
+{% endblock %}

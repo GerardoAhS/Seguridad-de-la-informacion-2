@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Mi perfil{% endblock %}
+{% block contenido %}
+<div class="tarjeta angosta">
+<div class="admin-titulo"><span class="avatar">{{ usuario.name[:1]|upper }}</span><div><h1>Mi perfil</h1><span class="pequeno">{{ usuario.email }} {% if usuario.email_verified %}<span class="etiqueta est-OK">correo confirmado</span>{% endif %} · rol {{ usuario.role }} · último acceso {{ usuario.last_login or '—' }}</span></div></div>
+<form method="post">{{ csrf() }}
+<label for="name">Nombre</label><input type="text" id="name" name="name" value="{{ usuario.name }}" required maxlength="80">
+<label for="pa">Contraseña actual (solo si vas a cambiarla)</label><input type="password" id="pa" name="password_actual" autocomplete="current-password">
+<label for="pn">Nueva contraseña</label><input type="password" id="pn" name="password_nueva" autocomplete="new-password">
+<p><button class="comprar">Guardar cambios</button></p></form></div>{% endblock %}

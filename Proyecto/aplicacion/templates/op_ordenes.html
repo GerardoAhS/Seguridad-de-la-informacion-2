@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% from "_macros.html" import estado with context %}
+{% block titulo %}Pedidos{% endblock %}
+{% block contenido %}
+<h1>Pedidos</h1>
+<div class="tabla-envoltura"><table><thead><tr><th>#</th><th>Cliente</th><th>Fecha</th><th>Total</th><th>Estado</th><th></th></tr></thead><tbody>
+{% for o in ordenes %}<tr><td><b>{{ o.id }}</b></td><td>{{ o.name }}</td><td>{{ o.created_at }}</td><td>{{ o.total_cents|mxn }}</td><td>{{ estado(o.status) }}</td><td><a class="boton suave" href="{{ url_for('staff.op_orden', oid=o.id) }}">Abrir</a></td></tr>
+{% else %}<tr><td colspan="6" class="vacio">No hay pedidos.</td></tr>{% endfor %}</tbody></table></div>{% endblock %}

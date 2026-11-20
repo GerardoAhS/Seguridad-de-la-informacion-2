@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block titulo %}Comprobantes{% endblock %}
+{% block contenido %}
+<h1>Mis comprobantes</h1>
+<div class="tabla-envoltura"><table><thead><tr><th>Orden</th><th>Emitido (UTC)</th><th>Total</th><th></th></tr></thead><tbody>
+{% for f in filas %}<tr><td><b>#{{ f.order_id }}</b></td><td>{{ f.created_at }}</td><td>{{ f.total_cents|mxn }}</td><td><a class="boton suave" href="{{ url_for('cliente.comprobante', oid=f.order_id) }}">Ver / verificar</a></td></tr>
+{% else %}<tr><td colspan="4" class="vacio">No hay comprobantes todavía.</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

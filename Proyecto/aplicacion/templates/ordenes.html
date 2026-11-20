@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% from "_macros.html" import estado with context %}
+{% block titulo %}Mis órdenes{% endblock %}
+{% block contenido %}
+<h1>Mis órdenes</h1>
+<div class="tabla-envoltura"><table><thead><tr><th>Orden</th><th>Fecha (UTC)</th><th>Productos</th><th>Total</th><th>Estado</th><th></th></tr></thead><tbody>
+{% for o in ordenes %}<tr><td><b>#{{ o.id }}</b></td><td>{{ o.created_at }}</td><td>{{ o.n }}</td><td>{{ o.total_cents|mxn }}</td><td>{{ estado(o.status) }}</td>
+<td><a class="boton {{ 'comprar' if o.status == 'PENDIENTE' else 'suave' }}" href="{{ url_for('cliente.orden_detalle', oid=o.id) }}">{{ 'Pagar' if o.status == 'PENDIENTE' else 'Ver' }}</a></td></tr>
+{% else %}<tr><td colspan="6" class="vacio">Aún no tienes órdenes. <a href="{{ url_for('publico.catalogo') }}">Explora el catálogo</a>.</td></tr>{% endfor %}</tbody></table></div>
+{% endblock %}

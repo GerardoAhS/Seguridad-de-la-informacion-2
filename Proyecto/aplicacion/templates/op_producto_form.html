@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}{{ 'Editar producto' if p else 'Registrar producto' }}{% endblock %}
+{% block contenido %}
+<div class="tarjeta media"><h1>{{ 'Editar producto' if p else 'Registrar producto' }}</h1>
+<form method="post" enctype="multipart/form-data">{{ csrf() }}
+<label>Nombre</label><input type="text" name="name" value="{{ p.name if p else '' }}" required maxlength="120">
+<label>Descripción</label><textarea name="description" required maxlength="2000">{{ p.description if p else '' }}</textarea>
+<div class="fila">
+<div><label>Categoría</label><select name="category" required>{% for c in categorias %}<option {{ 'selected' if p and p.category == c }}>{{ c }}</option>{% endfor %}</select></div>
+<div><label>Precio (MXN, ej. 149.90)</label><input type="text" name="price" value="{{ '%.2f' % (p.price_cents/100) if p else '' }}" required></div>
+</div>
+<label>Qué incluye (un punto por línea, opcional)</label><textarea name="highlights" maxlength="2000">{{ p.highlights if p else '' }}</textarea>
+{% if not p %}<label>Archivo (.txt, .md, .pdf, .png) — se almacena cifrado con AES-256-GCM</label><input type="file" name="archivo" required>{% endif %}
+<div class="acciones"><button class="comprar">Guardar</button><a class="boton fantasma" href="{{ url_for('staff.op_productos') }}">Cancelar</a></div></form></div>{% endblock %}

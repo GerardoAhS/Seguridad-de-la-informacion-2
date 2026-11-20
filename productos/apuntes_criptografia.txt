@@ -1,4 +1,0 @@
-Apuntes de criptografia
-=======================
-Cifrado simetrico, asimetrico, funciones hash y firma digital.
-(Contenido de prueba para el proyecto.)

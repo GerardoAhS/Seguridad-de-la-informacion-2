@@ -1,0 +1,16 @@
+# SECRETOS: nunca se suben al repositorio
+claves_privadas/
+certificados/*.key
+certificados/ssh_host_key
+infraestructura/certs/
+.env
+# datos generados
+base_de_datos/*.db
+base_de_datos/*.restaurando
+productos/*.enc
+respaldos/*
+!respaldos/.gitkeep
+registros/*
+!registros/.gitkeep
+__pycache__/
+*.pyc

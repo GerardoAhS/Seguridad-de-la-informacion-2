@@ -1,0 +1,8 @@
+flask>=3.0
+cryptography>=42
+argon2-cffi>=23.1      # Argon2id para contraseñas (sin él se usa scrypt automáticamente)
+pillow>=10             # fingerprint en PNG
+pypdf>=4               # fingerprint en PDF
+reportlab>=4           # genera el PDF de demostración y la capa invisible del fingerprint
+paramiko>=3            # solo para el servidor SSH de infraestructura/
+pytest>=8              # opcional: python scripts/correr_pruebas.py funciona sin pytest

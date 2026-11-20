@@ -1,0 +1,29 @@
+{
+  "comprobante": {
+    "fecha": "2026-11-09 23:44:47",
+    "moneda": "MXN (simulado)",
+    "numero_orden": 1,
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Guía práctica de criptografía aplicada",
+        "precio_centavos": 14900
+      },
+      {
+        "id": 2,
+        "nombre": "Apuntes de redes seguras",
+        "precio_centavos": 8900
+      }
+    ],
+    "referencia_transaccion": "TX-ACEA83F8AFC2",
+    "total_centavos": 23800,
+    "usuario": {
+      "correo": "ana@tienda.test",
+      "id": 3,
+      "nombre": "Ana Cliente"
+    }
+  },
+  "firma": "p+8dvuRJz/+bR+A2NoLIHnjlQPx83FRinPyxEnkn5zWKaAVGOhqgVwTK98z0CGdeN5DZTDhMuYFYzDe/NloHCouUydure0hgMC4RPJ9UmrUxfKTLEBccelRrNBSyXPTmJFVVKLMbxSIad9yOnZptEkUWcY6gLdjLacnjsjg/1qQchKfOnGf4tke4gBVy+OrIzUHNE9dTvu+JdiyfQeojLfI+op7zG3sSAkaAbgy8GPM7ltIytLL5e0hec80xdm7lK551/w/3qLnpPLrNnI5mASjByVikrJCaZVvcC03TJts7CYFE01+7iXTNOR0n0UClBWXx4RxXILJm9OV7BhMndivF01yrT/v0VL5XyuHMeYaesFm3L7Atb78hnIPUWawWjf+sFzhlHjvEJD84j0RCOwUI9Le4IWOa+f267mpwefmFkNIj6HAL3HScO/eTsjhA4x0vWnUpPL9btrvFdSpRmgjbwFyma126pKkLtrWC8c0cabi9ZVRp3q5AELhwraaT",
+  "algoritmo": "RSA-PSS-SHA256",
+  "key_id": "418974a973bf268c"
+}

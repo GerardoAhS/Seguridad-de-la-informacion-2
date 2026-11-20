@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Verificar firma{% endblock %}
+{% block contenido %}
+<div class="tarjeta media">
+<div class="admin-titulo"><div><h1>Verificar un comprobante</h1><span class="pequeno">Se comprueba con la clave PÚBLICA de la plataforma y contra los registros de la orden.</span></div></div>
+<form method="post" enctype="multipart/form-data">{{ csrf() }}
+<label>Archivo <code>comprobante_orden_N.json</code></label><input type="file" name="archivo" accept=".json,application/json" required>
+<p><button class="comprar">Verificar</button></p></form>
+{% if resultado %}
+  {% if resultado.valido %}<div class="sello bien"><span class="icono c-verde">✔</span><div><b class="valida">Firma válida</b>: el comprobante es auténtico y no fue modificado.<br><span class="pequeno">{{ resultado.motivo }}</span></div></div>
+  {% else %}<div class="sello mal"><span class="icono c-rojo">✖</span><div><b class="invalida">Firma inválida</b>: el archivo fue modificado o no fue emitido por la plataforma.<br><span>{{ resultado.motivo }}</span>
+    {% if resultado.diferencias %}<ul class="diferencias">{% for d in resultado.diferencias %}<li>{{ d }}</li>{% endfor %}</ul>{% endif %}</div></div>{% endif %}
+  {% if resultado.datos and resultado.datos.numero_orden is defined %}<p class="pequeno">Orden declarada en el archivo: #{{ resultado.datos.numero_orden }}{% if resultado.datos.total_centavos is number %} · total declarado {{ resultado.datos.total_centavos|mxn }}{% endif %}</p>{% endif %}
+{% endif %}
+<p class="pequeno">Cualquier cambio invalida el comprobante: un precio, un nombre, un campo agregado o repetido, el algoritmo o el identificador de la clave. Cambiar solo los espacios o la sangría no lo invalida, porque se firma la forma canónica del contenido.</p>
+</div>{% endblock %}

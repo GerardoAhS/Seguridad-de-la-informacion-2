@@ -1,0 +1,80 @@
+[2026-11-09 16:44:46] LOGIN_FAILED             | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:46] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=usuario:consultar ruta=/admin/usuarios
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=evento:consultar ruta=/admin/eventos
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=sesion:revocar ruta=/admin/sesiones
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=producto:modificar ruta=/operador/productos
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=orden:ver_todas ruta=/operador/ordenes
+[2026-11-09 16:44:46] LOGIN_SUCCESS            | usuario=operador@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=OPERADOR
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=operador@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=rol:asignar ruta=/admin/usuarios/4/rol
+[2026-11-09 16:44:46] ACCESS_DENIED            | usuario=operador@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | permiso=usuario:consultar ruta=/admin/usuarios
+[2026-11-09 16:44:47] LOGIN_SUCCESS            | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=ADMINISTRADOR
+[2026-11-09 16:44:47] ROLE_CHANGED             | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | usuario=4 CLIENTE->OPERADOR
+[2026-11-09 16:44:47] ROLE_CHANGED             | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | usuario=4 OPERADOR->CLIENTE
+[2026-11-09 16:44:47] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:47] ORDER_CREATED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=1 total_centavos=23800
+[2026-11-09 16:44:47] PAYMENT_APPROVED         | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=1 ref=TX-ACEA83F8AFC2 marca=Visa
+[2026-11-09 16:44:47] SIGNATURE_CREATED        | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=1 algoritmo=RSA-PSS-SHA256
+[2026-11-09 16:44:47] SIGNATURE_VERIFIED       | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=1 origen=bd
+[2026-11-09 16:44:48] SIGNATURE_VERIFIED       | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | origen=archivo Firma auténtica y coincide con los registros de la orden.
+[2026-11-09 16:44:48] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:48] ORDER_CREATED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=2 total_centavos=8900
+[2026-11-09 16:44:48] PAYMENT_APPROVED         | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=2 ref=TX-0EC087AF9B61 marca=Visa
+[2026-11-09 16:44:48] SIGNATURE_CREATED        | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=2 algoritmo=RSA-PSS-SHA256
+[2026-11-09 16:44:48] SIGNATURE_VERIFIED       | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=INVALIDA | origen=archivo La firma no corresponde al contenido: el comprobante fue modificado o no lo emitió la plataforma.
+[2026-11-09 16:44:48] SIGNATURE_VERIFIED       | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=INVALIDA | orden=2 origen=bd
+[2026-11-09 16:44:48] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:48] ORDER_CREATED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 total_centavos=48600
+[2026-11-09 16:44:48] PAYMENT_APPROVED         | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 ref=TX-42FDCF2A2F5F marca=Visa
+[2026-11-09 16:44:48] SIGNATURE_CREATED        | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 algoritmo=RSA-PSS-SHA256
+[2026-11-09 16:44:48] FINGERPRINT_CREATED      | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=1 tipo=md
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=1
+[2026-11-09 16:44:48] FINGERPRINT_CREATED      | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=2 tipo=txt
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=2
+[2026-11-09 16:44:48] FINGERPRINT_CREATED      | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=3 tipo=pdf
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=3
+[2026-11-09 16:44:48] FINGERPRINT_CREATED      | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=4 tipo=png
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=3 producto=4
+[2026-11-09 16:44:48] LOGIN_SUCCESS            | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=ADMINISTRADOR
+[2026-11-09 16:44:48] FINGERPRINT_RECOVERED    | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | usuario=3 orden=3 producto=3 metodo=huella invisible (HMAC verificado)
+[2026-11-09 16:44:48] LOGIN_SUCCESS            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:48] ORDER_CREATED            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=4 total_centavos=8900
+[2026-11-09 16:44:48] PAYMENT_APPROVED         | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=4 ref=TX-A978DDC4BD2A marca=Visa
+[2026-11-09 16:44:48] SIGNATURE_CREATED        | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=4 algoritmo=RSA-PSS-SHA256
+[2026-11-09 16:44:48] FINGERPRINT_CREATED      | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=4 producto=2 tipo=txt
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=4 producto=2
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | orden=4 producto=3 (no comprado o no pagado)
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | orden=1 producto=1 (no comprado o no pagado)
+[2026-11-09 16:44:48] LOGIN_SUCCESS            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:48] ORDER_CREATED            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=5 total_centavos=4900
+[2026-11-09 16:44:48] DOWNLOAD                 | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | orden=5 producto=4 (no comprado o no pagado)
+[2026-11-09 16:44:49] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:49] ORDER_CREATED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 total_centavos=14900
+[2026-11-09 16:44:49] PAYMENT_APPROVED         | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 ref=TX-3755FC81B5A4 marca=Visa
+[2026-11-09 16:44:49] SIGNATURE_CREATED        | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 algoritmo=RSA-PSS-SHA256
+[2026-11-09 16:44:49] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:49] SIGNATURE_VERIFIED       | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 origen=bd
+[2026-11-09 16:44:49] FINGERPRINT_CREATED      | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 producto=1 tipo=md
+[2026-11-09 16:44:49] DOWNLOAD                 | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | orden=6 producto=1
+[2026-11-09 16:44:49] USER_REGISTERED          | usuario=nuevo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE (pendiente de confirmar correo)
+[2026-11-09 16:44:49] EMAIL_SENT               | usuario=nuevo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | via=simulado
+[2026-11-09 16:44:49] USER_REGISTERED          | usuario=nuevo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | correo ya registrado
+[2026-11-09 16:44:49] USER_REGISTERED          | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE (pendiente de confirmar correo)
+[2026-11-09 16:44:49] EMAIL_SENT               | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | via=simulado
+[2026-11-09 16:44:49] EMAIL_VERIFIED           | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK |
+[2026-11-09 16:44:49] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:49] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:50] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:50] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:50] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=RECHAZADO | contraseña incorrecta
+[2026-11-09 16:44:50] LOGIN_FAILED             | usuario=bloqueo@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=BLOQUEADO | demasiados intentos fallidos
+[2026-11-09 16:44:50] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:50] CSRF_REJECTED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | ruta=/carrito/agregar/1
+[2026-11-09 16:44:50] CSRF_REJECTED            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=DENEGADO | ruta=/carrito/agregar/1
+[2026-11-09 16:44:50] LOGIN_SUCCESS            | usuario=ana@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:50] LOGIN_SUCCESS            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:51] LOGIN_SUCCESS            | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=ADMINISTRADOR
+[2026-11-09 16:44:51] SESSION_REVOKED          | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | sesion de luis@tienda.test
+[2026-11-09 16:44:51] LOGIN_SUCCESS            | usuario=luis@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=CLIENTE
+[2026-11-09 16:44:51] LOGIN_SUCCESS            | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | rol=ADMINISTRADOR
+[2026-11-09 16:44:51] ACCOUNT_DISABLED         | usuario=admin@tienda.test | ip=127.0.0.1 | recurso=tienda | resultado=OK | usuario=4

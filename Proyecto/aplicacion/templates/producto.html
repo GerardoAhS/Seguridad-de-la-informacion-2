@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% from "_macros.html" import icono, color, csrf with context %}
+{% block titulo %}{{ p.name }}{% endblock %}
+{% block contenido %}
+<p class="pequeno"><a href="{{ url_for('publico.catalogo') }}">Catálogo</a> › <a href="{{ url_for('publico.catalogo', cat=p.category) }}">{{ p.category }}</a></p>
+<section class="detalle">
+  <div class="vitrina {{ color(p.category) }}"><span class="cubierta-cat">{{ p.category }}</span><span class="cubierta-titulo">{{ p.name }}</span><span class="cubierta-pie">{{ FORMATOS.get(p.file_type, p.file_type) }}</span></div>
+  <div class="tarjeta">
+    <span class="etiqueta">{{ p.category }}</span> <span class="etiqueta">.{{ p.file_type }} · {{ FORMATOS.get(p.file_type, '') }}</span>
+    <h1>{{ p.name }}</h1>
+    <p>{{ p.description }}</p>
+    {% if puntos %}<h3>Qué incluye</h3><ul class="lista-check">{% for l in puntos %}<li>{{ l }}</li>{% endfor %}</ul>{% endif %}
+    <p class="precio">{{ p.price_cents|mxn }}<small>MXN</small></p>
+    {% if usuario and usuario.role == 'CLIENTE' %}
+    <div class="acciones">
+      <form method="post" action="{{ url_for('cliente.comprar_ahora', pid=p.id) }}">{{ csrf() }}<button class="comprar grande">Comprar ahora</button></form>
+      <form method="post" action="{{ url_for('cliente.carrito_agregar', pid=p.id) }}">{{ csrf() }}<button class="grande">Agregar al carrito</button></form>
+    </div>
+    {% elif not usuario %}<div class="acciones"><a class="boton comprar grande" href="{{ url_for('publico.login', next=request.path) }}">Inicia sesión para comprar</a>
+      <a class="boton fantasma" href="{{ url_for('publico.registro') }}">Crear cuenta</a></div>
+    {% else %}<p class="pequeno">Las cuentas de personal no realizan compras.</p>{% endif %}
+    <div class="garantias">
+      <div><b>Descarga inmediata</b>Disponible en «Mis productos» al aprobarse el pago.</div>
+      <div><b>Comprobante firmado</b>Firma digital RSA verificable por cualquiera.</div>
+      <div><b>Copia personal</b>Huella invisible ligada a tu cuenta y tu orden.</div>
+    </div>
+  </div>
+</section>
+{% if relacionados %}<h2>También en {{ p.category }}</h2>
+<div class="rejilla">{% for r in relacionados %}
+  <article class="producto"><a class="portadilla {{ color(r.category) }}" href="{{ url_for('publico.producto', pid=r.id) }}"><span class="cubierta-cat">{{ r.category }}</span><span class="cubierta-titulo">{{ r.name }}</span><span class="cubierta-pie">.{{ r.file_type }}</span></a>
+  <div class="cuerpo"><h3><a href="{{ url_for('publico.producto', pid=r.id) }}">{{ r.name }}</a></h3><div class="pie"><span class="precio">{{ r.price_cents|mxn }}</span>
+  <a class="boton fantasma" href="{{ url_for('publico.producto', pid=r.id) }}">Ver</a></div></div></article>{% endfor %}</div>{% endif %}
+{% endblock %}

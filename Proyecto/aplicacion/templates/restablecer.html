@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Nueva contraseña{% endblock %}
+{% block contenido %}
+<div class="tarjeta angosta"><h1>Nueva contraseña</h1>
+<form method="post">{{ csrf() }}
+<label for="password">Nueva contraseña</label><input type="password" id="password" name="password" required minlength="10" autocomplete="new-password">
+<label for="password2">Repítela</label><input type="password" id="password2" name="password2" required autocomplete="new-password">
+<p><button class="comprar ancho grande">Guardar</button></p></form></div>{% endblock %}

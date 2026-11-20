@@ -1,0 +1,8 @@
+{% extends "base.html" %}{% from "_macros.html" import estado with context %}
+{% block titulo %}Eventos{% endblock %}
+{% block contenido %}
+<div class="encabezado-seccion"><h1>Eventos de seguridad</h1>
+<form class="buscador" method="get"><select name="evento"><option value="">Todos los eventos</option>{% for t in tipos %}<option {{ 'selected' if t == tipo }}>{{ t }}</option>{% endfor %}</select> <button>Filtrar</button></form></div>
+<div class="tabla-envoltura"><table><thead><tr><th>#</th><th>Fecha (UTC)</th><th>Usuario</th><th>Evento</th><th>Resultado</th><th>Origen</th><th>Detalle</th></tr></thead><tbody>
+{% for e in eventos %}<tr><td>{{ e.id }}</td><td>{{ e.created_at }}</td><td>{{ e.user_email }}</td><td><b>{{ e.event }}</b></td><td>{{ estado(e.result) }}</td><td>{{ e.origin }}</td><td>{{ e.detail }}</td></tr>{% endfor %}</tbody></table></div>
+<p class="pequeno">Bitácora de solo escritura: ni la aplicación puede modificar o eliminar estos registros.</p>{% endblock %}

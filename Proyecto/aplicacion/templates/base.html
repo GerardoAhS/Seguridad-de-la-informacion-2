@@ -1,0 +1,50 @@
+{% from "_macros.html" import logo, csrf with context %}
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block titulo %}Tienda{% endblock %} · Tienda Segura</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='estilo.css') }}"></head>
+<body>
+<header class="barra"><div class="barra-in">
+  <a class="marca" href="{{ url_for('publico.catalogo') }}">{{ logo() }}<span><b>Tienda Segura</b><small>libros, apuntes y guías digitales</small></span></a>
+  <nav class="nav">
+    <a href="{{ url_for('publico.catalogo') }}" class="{{ 'activo' if request.endpoint == 'publico.catalogo' }}">Catálogo</a>
+    {% if usuario %}
+      {% if usuario.role == 'CLIENTE' %}
+        <a href="{{ url_for('cliente.ordenes') }}" class="{{ 'activo' if request.endpoint in ('cliente.ordenes','cliente.orden_detalle') }}">Mis órdenes</a>
+        <a href="{{ url_for('cliente.mis_productos') }}" class="{{ 'activo' if request.endpoint == 'cliente.mis_productos' }}">Mis productos</a>
+        <a href="{{ url_for('cliente.comprobantes') }}" class="{{ 'activo' if request.endpoint in ('cliente.comprobantes','cliente.comprobante') }}">Comprobantes</a>
+        <a href="{{ url_for('cliente.verificar') }}" class="{{ 'activo' if request.endpoint == 'cliente.verificar' }}">Verificar firma</a>
+      {% elif usuario.role == 'OPERADOR' %}
+        <a href="{{ url_for('staff.op_productos') }}" class="{{ 'activo' if (request.endpoint or '').startswith('staff.op_producto') }}">Productos</a>
+        <a href="{{ url_for('staff.op_ordenes') }}" class="{{ 'activo' if request.endpoint in ('staff.op_ordenes','staff.op_orden') }}">Pedidos</a>
+      {% elif usuario.role == 'ADMINISTRADOR' %}
+        <a href="{{ url_for('staff.admin_usuarios') }}" class="{{ 'activo' if request.endpoint == 'staff.admin_usuarios' }}">Usuarios</a>
+        <a href="{{ url_for('staff.admin_sesiones') }}" class="{{ 'activo' if request.endpoint == 'staff.admin_sesiones' }}">Sesiones</a>
+        <a href="{{ url_for('staff.admin_eventos') }}" class="{{ 'activo' if request.endpoint == 'staff.admin_eventos' }}">Eventos</a>
+        <a href="{{ url_for('staff.admin_fingerprint') }}" class="{{ 'activo' if request.endpoint == 'staff.admin_fingerprint' }}">Rastrear copia</a>
+        <a href="{{ url_for('staff.admin_config') }}" class="{{ 'activo' if request.endpoint == 'staff.admin_config' }}">Configuración</a>
+      {% endif %}
+    {% endif %}
+  </nav>
+  <span class="espacio"></span>
+  <nav class="nav">
+  {% if usuario %}
+    {% if usuario.role == 'CLIENTE' %}<a class="pastilla-carrito {{ 'activo' if request.endpoint == 'cliente.carrito' }}" href="{{ url_for('cliente.carrito') }}">Carrito <span class="num">{{ n_carrito }}</span></a>{% endif %}
+    <a class="usuario-chip" href="{{ url_for('publico.perfil') }}" title="Mi perfil"><span class="avatar">{{ usuario.name[:1]|upper }}</span><span>{{ usuario.name.split(' ')[0] }} <span class="etiqueta">{{ usuario.role }}</span></span></a>
+    <form method="post" action="{{ url_for('publico.logout') }}">{{ csrf() }}<button class="suave">Salir</button></form>
+  {% else %}
+    <a href="{{ url_for('publico.login') }}">Iniciar sesión</a>
+    <a class="boton comprar" href="{{ url_for('publico.registro') }}">Crear cuenta</a>
+  {% endif %}
+  </nav>
+</div></header>
+<main>
+  {% for categoria, mensaje in avisos() %}<div class="aviso {{ categoria }}">{{ mensaje }}</div>{% endfor %}
+  {% block contenido %}{% endblock %}
+</main>
+<footer><div class="pie-in">
+  <p><b>Tienda Segura</b> — proyecto final de Seguridad de la Información.</p>
+  <p>Conexión por HTTPS con certificado de nuestra CA local. Los archivos se guardan cifrados (AES-256-GCM), cada comprobante va firmado (RSA-PSS) y cada copia descargada lleva una huella a nombre de quien la compró.</p>
+  <p class="pequeno">Los pagos son simulados: no se cobra nada y los datos de tarjeta no se guardan.</p>
+</div></footer>
+</body></html>

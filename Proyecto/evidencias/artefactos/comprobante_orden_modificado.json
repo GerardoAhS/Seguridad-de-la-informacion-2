@@ -1,0 +1,24 @@
+{
+  "comprobante": {
+    "fecha": "2026-11-09 23:44:48",
+    "moneda": "MXN (simulado)",
+    "numero_orden": 2,
+    "productos": [
+      {
+        "id": 2,
+        "nombre": "Apuntes de redes seguras",
+        "precio_centavos": 8900
+      }
+    ],
+    "referencia_transaccion": "TX-0EC087AF9B61",
+    "total_centavos": 1,
+    "usuario": {
+      "correo": "ana@tienda.test",
+      "id": 3,
+      "nombre": "Ana Cliente"
+    }
+  },
+  "firma": "56tEf74p2hlZxLkwDA1X4AbsunanQCtPJ4+wmVGYD9RW4Z+OgmagHFP7yedAO/mDe45lALPxGSOv+rXc9rDVEiH8dPW7LzqZtNc8+9QBmbp+dEZ/Yh0wBK/Fncbnx2d7uJoMBVGbtHGn87ieZBqDxGngEdcg8wjukIs7jQvfmS11Fx7Cm8i5xbkDBq4P3N1fy8xkJTBwjWzKi0Hv80FvZ0uyMhobeyq8ZyB4k3CutCrC7KAnVF9zwfvVff88BbXJQqPzNvRoqwEy1KhFPTD84ekEDxM+BMaOzFGPyjsfZGm7naN3spMKHC7RxyTB5h02L8m7oqC3J864F3FLwF+QWxRbeiObIJXVLQCjz11hWPl5qLQErp3eCDlVWrgwc4GvUpxOJSyGDynMFOTj31rQx2AdfG2GQTvqK86GHX75tRN0FbzkTFDF4w91JT8CgY7utDHzrQpfLJ+9fhTpJm04FbXDke4XJLNV0/QnJeFBoXZ9l73jGmi4mhZCACw/qDGw",
+  "algoritmo": "RSA-PSS-SHA256",
+  "key_id": "418974a973bf268c"
+}

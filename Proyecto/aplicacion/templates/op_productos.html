@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% from "_macros.html" import icono, estado, csrf with context %}
+{% block titulo %}Productos{% endblock %}
+{% block contenido %}
+<div class="encabezado-seccion"><h1>Administración de productos</h1><a class="boton comprar" href="{{ url_for('staff.op_producto_nuevo') }}">＋ Registrar producto</a></div>
+<div class="tabla-envoltura"><table><thead><tr><th>#</th><th>Producto</th><th>Precio</th><th>Tipo</th><th>SHA-256 original</th><th>Estado</th><th></th></tr></thead><tbody>
+{% for p in productos %}<tr><td>{{ p.id }}</td><td><div class="renglon">{{ icono(p.category) }}<div class="nombre"><b>{{ p.name }}</b><small>{{ p.category }}</small></div></div></td>
+<td>{{ p.price_cents|mxn }}</td><td>.{{ p.file_type }}</td><td class="mono">{{ p.file_hash[:16] }}…</td><td>{{ estado(p.status) }}</td>
+<td><a class="boton suave" href="{{ url_for('staff.op_producto_editar', pid=p.id) }}">Editar</a>
+<form class="en-linea" method="post" action="{{ url_for('staff.op_producto_estado', pid=p.id) }}">{{ csrf() }}<button class="{{ 'peligro' if p.status == 'ACTIVO' else '' }}">{{ 'Desactivar' if p.status == 'ACTIVO' else 'Activar' }}</button></form></td></tr>{% endfor %}
+</tbody></table></div>{% endblock %}

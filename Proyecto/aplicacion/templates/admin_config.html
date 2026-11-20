@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% from "_macros.html" import csrf with context %}
+{% block titulo %}Configuración{% endblock %}
+{% block contenido %}
+<div class="tarjeta media"><h1>Configuración de seguridad</h1>
+<form method="post">{{ csrf() }}
+<div class="fila"><div><label>Inactividad máxima de la sesión (minutos, 5-240)</label><input type="number" name="session_minutes" value="{{ minutos }}" min="5" max="240" required></div>
+<div><label>Intentos fallidos antes de bloquear (3-20)</label><input type="number" name="max_login_attempts" value="{{ intentos }}" min="3" max="20" required></div></div>
+<p><button class="comprar">Guardar</button></p></form>
+<div class="tabla-envoltura"><table class="ficha"><tbody>
+<tr><th>Algoritmo de contraseñas</th><td><b>{{ algoritmo }}</b></td></tr>
+<tr><th>Clave pública de comprobantes</th><td class="mono">{{ key_id }}</td></tr>
+<tr><th>Correo saliente</th><td>{% if smtp %}<span class="etiqueta est-OK">SMTP configurado</span> {{ smtp }}{% else %}<span class="etiqueta est-PENDIENTE">Modo laboratorio</span> los correos se guardan en <code>registros/correo_simulado.log</code>{% endif %}</td></tr>
+</tbody></table></div>
+<p class="pequeno">El administrador no tiene acceso a las claves privadas ni a las contraseñas originales.</p></div>{% endblock %}

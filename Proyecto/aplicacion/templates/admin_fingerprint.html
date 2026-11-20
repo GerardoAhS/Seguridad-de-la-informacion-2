@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% from "_macros.html" import estado, csrf with context %}
+{% block titulo %}Rastrear copia{% endblock %}
+{% block contenido %}
+<div class="tarjeta media">
+<div class="admin-titulo"><div><h1>Rastrear una copia filtrada</h1>
+<span class="pequeno">Sube el <b>producto descargado</b> (.pdf, .png, .md, .txt — aunque lo hayan renombrado) o un <b>comprobante .json</b>. Se identifica al comprador, la orden y la descarga.</span></div></div>
+<form method="post" enctype="multipart/form-data">{{ csrf() }}
+<input type="file" name="archivo" required><p><button class="comprar">Rastrear</button></p></form>
+{% if res %}
+  {% if res.ficha %}{% set f = res.ficha %}
+  <div class="sello bien"><span class="icono c-verde">✔</span><div><b class="valida">Copia identificada</b><br><span class="pequeno">Método: {{ res.metodo }}{% if res.tipo %} · archivo detectado como .{{ res.tipo }}{% endif %}</span></div></div>
+  <div class="tabla-envoltura"><table class="ficha"><tbody>
+  <tr><th>Comprador</th><td>{% if f.usuario %}#{{ f.usuario.id }} · <b>{{ f.usuario.name }}</b> ({{ f.usuario.email }}){% else %}#{{ f.user_id }} (ya no existe){% endif %}</td></tr>
+  <tr><th>Orden</th><td>#{{ f.order_id }}{% if f.orden %} · {{ estado(f.orden.status) }} · {{ f.orden.total_cents|mxn }} · {{ f.orden.created_at }}{% endif %}</td></tr>
+  {% if f.product_id %}<tr><th>Producto</th><td>{% if f.producto %}#{{ f.producto.id }} · {{ f.producto.name }}{% else %}#{{ f.product_id }}{% endif %}</td></tr>{% endif %}
+  <tr><th>Descargas registradas</th><td>{% for d in f.descargas %}{{ d.created_at }} · {{ d.name }} · desde {{ d.ip }}<br>{% else %}sin registro{% endfor %}</td></tr>
+  </tbody></table></div>
+  {% if res.nota and res.tipo == 'json' %}<p class="pequeno">{{ res.nota }}</p>{% endif %}
+  {% else %}
+  <div class="sello mal"><span class="icono c-rojo">✖</span><div><b class="invalida">No se pudo identificar al comprador</b><br>{{ res.nota }}</div></div>
+  {% endif %}
+{% endif %}
+</div>{% endblock %}
